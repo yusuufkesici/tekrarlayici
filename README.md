@@ -1,7 +1,7 @@
-# 📱 Soru-Cevap Mobil Uygulaması
+# 📚 Sınav Tekrar Uygulaması
 
 ## 🎯 Proje Amacı
-Kullanıcıların birbirlerine sorular sorabildiği, cevaplar verebildiği ve bilgi paylaşımında bulunabildiği interaktif bir soru-cevap platformu.
+Kullanıcıların sınavlara hazırlanırken öğrendiklerini aralıklı tekrar yöntemiyle pekiştirmelerini sağlayan, oyunlaştırma elementleri içeren bir öğrenme platformu.
 
 ## 🛠️ Teknik Stack
 - **Frontend**: 
@@ -9,6 +9,21 @@ Kullanıcıların birbirlerine sorular sorabildiği, cevaplar verebildiği ve bi
   - TypeScript
   - React Navigation
   - Redux Toolkit (State yönetimi)
+  - React Query (Veri yönetimi)
+- **Backend**: 
+  - Firebase
+  - Supabase (Yedek plan)
+- **Storage**:
+  - Firebase Storage
+  - AsyncStorage (Offline veri)
+- **AI**: 
+  - Claude Sonnet API
+  - Offline mod için TensorFlow Lite
+- **Authentication**: 
+  - Firebase Auth
+- **Notifications**: 
+  - Firebase Cloud Messaging
+  - Local Notifications
 
 ## 🚀 Başlangıç
 
@@ -16,13 +31,15 @@ Kullanıcıların birbirlerine sorular sorabildiği, cevaplar verebildiği ve bi
 - Node.js (v18 veya üzeri)
 - npm veya yarn
 - Expo CLI
+- Firebase hesabı
+- Claude API anahtarı
 
 ### Kurulum
 
 1. Projeyi klonlayın
 ```bash
-git clone https://github.com/yusuufaslan/soru-cevap-app.git
-cd soru-cevap-app
+git clone https://github.com/yusuufkesici/tekrarlayici.git
+cd tekrarlayici
 ```
 
 2. Bağımlılıkları yükleyin
@@ -32,7 +49,15 @@ npm install
 yarn install
 ```
 
-3. Uygulamayı başlatın
+3. Firebase yapılandırmasını ayarlayın
+- `src/config/firebase.config.ts` dosyasını oluşturun
+- Firebase Console'dan aldığınız yapılandırma bilgilerini ekleyin
+
+4. Çevre değişkenlerini ayarlayın
+- `.env` dosyasını oluşturun
+- Gerekli API anahtarlarını ekleyin
+
+5. Uygulamayı başlatın
 ```bash
 npm start
 # veya
@@ -42,30 +67,53 @@ yarn start
 ## 📱 Özellikler
 
 ### Ana Özellikler
-- 👤 Kullanıcı kimlik doğrulama sistemi (Giriş, Kayıt, Şifre sıfırlama)
-- 📝 Soru ekleme ve düzenleme
-- 💬 Soru cevaplama ve yorum yapma
-- 👥 Profil yönetimi
-- 🔍 Soru arama ve filtreleme
+- 📝 Akıllı soru tekrar sistemi
+- 🎯 Kişiselleştirilmiş öğrenme deneyimi
+- 🏆 Gamification elementleri
+- 📊 Detaylı performans analizi
+- 🔄 Offline çalışma desteği
+- 🤖 AI destekli kategorizasyon
+- 📱 Cross-platform destek
+
+### Tekrar Algoritması
+1. İlk gösterim: Aynı gün
+2. Doğru cevap → Sonraki gösterim:
+   - 1. tekrar: 3 gün sonra
+   - 2. tekrar: 7 gün sonra
+   - 3. tekrar: 14 gün sonra
+3. Yanlış cevap → Ertesi gün tekrar
 
 ## 🎨 UI Tema
-- Modern ve kullanıcı dostu arayüz
-- Responsive tasarım
-- Özelleştirilmiş UI bileşenleri
+- **Ana Renkler**:
+  - Mavi: #007AFF
+  - Turuncu: #FF9500
+  - Arka plan: #F2F2F7
+- **Typography**:
+  - Başlıklar: SF Pro Display
+  - İçerik: SF Pro Text
 
-## 📊 Proje Yapısı
+## 📊 Veritabanı Yapısı
 ```
-frontend/
-  ├── assets/         # Resimler ve medya dosyaları
-  ├── components/     # Yeniden kullanılabilir UI bileşenleri
-  ├── constants/      # Tema ve sabit değişkenler
-  ├── navigation/     # Navigasyon yapılandırması
-  ├── screens/        # Uygulama ekranları
-  ├── store/          # Redux store ve slice'lar
-  ├── services/       # API servisleri
-  ├── utils/          # Yardımcı fonksiyonlar
-  └── hooks/          # Özel React hooks'ları
+users/
+  ├── userId/
+  │   ├── profile
+  │   ├── streak
+  │   └── statistics
+
+questions/
+  ├── questionId/
+  │   ├── content
+  │   ├── category
+  │   ├── nextReview
+  │   └── history
 ```
+
+## 🔒 Güvenlik
+- API key güvenliği
+- Veri şifreleme
+- Biometrik kimlik doğrulama
+- Rate limiting
+- Input validasyonu
 
 ## 🤝 Katkıda Bulunma
 1. Fork'layın
@@ -78,6 +126,7 @@ frontend/
 Bu proje MIT lisansı altında lisanslanmıştır.
 
 ## 📞 İletişim
-Proje Sahibi - [@yusuufaslan](https://github.com/yusuufaslan)
+Proje Sahipleri:
+- [@yusuufkesici](https://github.com/yusuufkesici)
 
-Proje Linki: [https://github.com/yusuufaslan/soru-cevap-app](https://github.com/yusuufaslan/soru-cevap-app) 
+Proje Linki: [https://github.com/yusuufkesici/tekrarlayici](https://github.com/yusuufkesici/tekrarlayici) 
